@@ -10,58 +10,106 @@
 </head>
 
 <body>
-    <div class="container-fluid p-5 bg-info-subtle d-flex flex-column justify-content-center align-items-center " style="height: 100%;">
+    <div class="container-fluid p-3 bg-info-subtle d-flex flex-column justify-content-center align-items-center "
+        style="height: 100%;">
         <div class="container h-25 d-flex flex-column justify-content-center align-items-center p-3 m-2" id="chance">
             <h2 class="text-primary text-center">
                 Welcome to Hangman Game
             </h2>
-            <h4 class="text-center">You have 7 chances to guess the word</h4>
-            <h4 class="m-3 text-danger">You have <span id="chances"></span> chances left</h4>
+            <h4 class="text-center">Guess the word by clicking on the KeyBoard</h4>
+            <p class="text-center">Hint: Name of a person</p>
+
+            <h4 class="m-1 text-danger">You have <span id="chances"></span> chances left</h4>
+            <span class="border border-info bg-secondary m-auto p-1">
+                <h6 class="text-center text-light">Wrong word choossen by you</h6>
+                <p class="text-light" id="wrongwords"></p>
+            </span>
         </div>
-        <div class="container w-50 my-3 p-3 mx-auto h-25 d-flex flex-row justify-content-center align-items-center"
+        <div class="container w-50 my-1 p-1 mx-auto h-25 d-flex flex-row justify-content-center align-items-center"
             id="inputs">
 
         </div>
-        <div class="container h-50 float-end w-50 d-flex flex-row flex-wrap justify-content-center align-items-center"
-            onclick="checkinput(event)" id="keyboard">
-            <span class="p-2 m-2 bg-primary text-light rounded">A</span><span
-                class="p-2 m-2 bg-primary text-light rounded">B</span><span
-                class="p-2 m-2 bg-primary text-light rounded">C</span><span
-                class="p-2 m-2 bg-primary text-light rounded">D</span><span
-                class="p-2 m-2 bg-primary text-light rounded">E</span><span
-                class="p-2 m-2 bg-primary text-light rounded">F</span><span
-                class="p-2 m-2 bg-primary text-light rounded">G</span><span
-                class="p-2 m-2 bg-primary text-light rounded">H</span><span
-                class="p-2 m-2 bg-primary text-light rounded">I</span><span
-                class="p-2 m-2 bg-primary text-light rounded">J</span><span
-                class="p-2 m-2 bg-primary text-light rounded">K</span><span
-                class="p-2 m-2 bg-primary text-light rounded">L</span><span
-                class="p-2 m-2 bg-primary text-light rounded">M</span><span
-                class="p-2 m-2 bg-primary text-light rounded">N</span><span
-                class="p-2 m-2 bg-primary text-light rounded">O</span><span
-                class="p-2 m-2 bg-primary text-light rounded">P</span><span
-                class="p-2 m-2 bg-primary text-light rounded">Q</span><span
-                class="p-2 m-2 bg-primary text-light rounded">R</span><span
-                class="p-2 m-2 bg-primary text-light rounded">S</span><span
-                class="p-2 m-2 bg-primary text-light rounded">T</span><span
-                class="p-2 m-2 bg-primary text-light rounded">U</span><span
-                class="p-2 m-2 bg-primary text-light rounded">V</span><span
-                class="p-2 m-2 bg-primary text-light rounded">W</span><span
-                class="p-2 m-2 bg-primary text-light rounded">X</span><span
-                class="p-2 m-2 bg-primary text-light rounded">Y</span>
-            <span class="p-2 m-2 text-light bg-primary rounded">Z</span>
-        </div>
-
-
-
-        <div class="container h-100 m-auto p-3" id="hidden">
+        <div class="container h-25 m-0 p-1" id="hidden">
             <h1 class="text-success text-center py-3" id="won">You won</h1>
-            <button class="btn btn-primary" id="wons" onclick="location.reload()">Play Agian</button>
-            <div class="container bg-danger-subtle d-flex mb-5 p-3 flex-column justify-content-center align-items-center" id="loose">
+            <button class="btn btn-primary" id="wons" onclick="location.reload()">Play Again</button>
+            <div class="container bg-danger-subtle d-flex mb-2 p-2 flex-column justify-content-center align-items-center"
+                id="loose">
                 <h1 class="text-danger">You Loose</h1>
-                <button class="btn btn-primary"onclick="location.reload()">Play Agian</button>
+                <button class="btn btn-primary" onclick="location.reload()">Play Agian</button>
             </div>
         </div>
+        <div class="container w-100 my-1 p-1 mx-auto h-25 d-flex   flex-row justify-content-center align-items-center">
+            <div
+                class="container w-50 my-3 p-4 mx-auto h-25 boder border-success d-flex flex-row justify-content-center align-items-center">
+                <svg width="300" height="200" class="border border-primary border-doted">
+                    <line x1="25" y1="180" x2="250" y2="180" id="line1"
+                        style="stroke:rgb(255,0,0);stroke-width:2;display:none" />
+                    <line x1="30" y1="185" x2="30" y2="20" id="line3"
+                        style="stroke:rgb(255,0,0);stroke-width:2;display:none" />
+                    <line x1="25" y1="25" x2="180" y2="25" id="line4"
+                        style="stroke:rgb(255,0,0);stroke-width:2;display:none" />
+                    <line x1="130" y1="20" x2="130" y2="40" id="line6"
+                        style="stroke:rgb(255,0,0);stroke-width:2;display:none" />
+                    <line x1="25" y1="50" x2="60" y2="20" id="line5"
+                        style="stroke:rgb(255,0,0);stroke-width:2;display:none" />
+                    <g>
+                        <svg width="50" height="150" x="105" y="60" id="line2"
+                            class="border border-primary border-doted" style="display: none;">
+                            <circle cx="25" cy="25" r="15" stroke="green" stroke-width="4" fill="yellow" />
+                            <line x1="25" y1="40" x2="25" y2="90" style="stroke:rgb(255,0,0);stroke-width:2" />
+                            <line x1="25" y1="50" x2="10" y2="70" style="stroke:rgb(255,0,0);stroke-width:2" />
+                            <line x1="25" y1="50" x2="40" y2="70" style="stroke:rgb(255,0,0);stroke-width:2" />
+                            <line x1="25" y1="90" x2="10" y2="120" style="stroke:rgb(255,0,0);stroke-width:2" />
+                            <line x1="25" y1="90" x2="40" y2="120" style="stroke:rgb(255,0,0);stroke-width:2" />
+                            <!-- <circle></circle> -->
+                        </svg>
+
+                        <svg width="50" height="150" x="105" y="30" id="line7"
+                            class="border border-primary border-doted" style="display: none;">
+                            <circle cx="25" cy="25" r="15" stroke="green" stroke-width="4" fill="yellow" />
+                            <line x1="25" y1="40" x2="25" y2="90" style="stroke:rgb(255,0,0);stroke-width:2" />
+                            <line x1="25" y1="50" x2="10" y2="70" style="stroke:rgb(255,0,0);stroke-width:2" />
+                            <line x1="25" y1="50" x2="40" y2="70" style="stroke:rgb(255,0,0);stroke-width:2" />
+                            <line x1="25" y1="90" x2="10" y2="120" style="stroke:rgb(255,0,0);stroke-width:2" />
+                            <line x1="25" y1="90" x2="40" y2="120" style="stroke:rgb(255,0,0);stroke-width:2" />
+                            <!-- <circle></circle> -->
+                        </svg>
+                    </g>
+                </svg>
+            </div>
+            <div class="container h-50 float-end w-50 d-flex flex-row flex-wrap justify-content-center align-items-center"
+                 id="keyboard">
+                <button class="p-2 btn btn-primary m-2 text-light rounded">A</button><button
+                    class="p-2 m-2 btn btn-primary text-light rounded">B</button><button
+                    class="p-2 m-2 btn btn-primary text-light rounded">C</button><button
+                    class="p-2 m-2 btn btn-primary text-light rounded">D</button><button
+                    class="p-2 m-2 btn btn-primary text-light rounded">E</button><button
+                    class="p-2 m-2 btn btn-primary text-light rounded">F</button><button
+                    class="p-2 m-2 btn btn-primary text-light rounded">G</button><button
+                    class="p-2 m-2 btn btn-primary text-light rounded">H</button><button
+                    class="p-2 m-2 btn btn-primary text-light rounded">I</button><button
+                    class="p-2 m-2 btn btn-primary text-light rounded">J</button><button
+                    class="p-2 m-2 btn btn-primary text-light rounded">K</button><button
+                    class="p-2 m-2 btn btn-primary text-light rounded">L</button><button
+                    class="p-2 m-2 btn btn-primary text-light rounded">M</button><button
+                    class="p-2 m-2 btn btn-primary text-light rounded">N</button><button
+                    class="p-2 m-2 btn btn-primary text-light rounded">O</button><button
+                    class="p-2 m-2 btn btn-primary text-light rounded">P</button><button
+                    class="p-2 m-2 btn btn-primary text-light rounded">Q</button><button
+                    class="p-2 m-2 btn btn-primary text-light rounded">R</button><button
+                    class="p-2 m-2 btn btn-primary text-light rounded">S</button><button
+                    class="p-2 m-2 btn btn-primary text-light rounded">T</button><button
+                    class="p-2 m-2 btn btn-primary text-light rounded">U</button><button
+                    class="p-2 m-2 btn btn-primary text-light rounded">V</button><button
+                    class="p-2 m-2 btn btn-primary text-light rounded">W</button><button
+                    class="p-2 m-2 btn btn-primary text-light rounded">X</button><button
+                    class="p-2 m-2 btn btn-primary text-light rounded">Y</button>
+                <button class="p-2 btn btn-primary m-2 text-light rounded">Z</button>
+            </div>
+        </div>
+
+
+
     </div>
 
 
